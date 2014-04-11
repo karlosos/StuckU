@@ -1,0 +1,30 @@
+body {
+    margin: 0 0 0 0;
+    background-color: #dfdfdf;
+}
+nav {
+    height: 60px;
+    width: 100%;
+    background-color: #2b6600;
+}
+
+#container {
+    margin: 8px auto;
+    width: 976px;
+    height: 200px;
+}
+
+aside {
+    float: left;
+    width: 394px;
+    height: 200px;
+}
+
+section {
+    float: left;
+}
+
+#news {
+        background-color: #ffffff;
+        width: 582px;
+}
