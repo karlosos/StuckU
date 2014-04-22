@@ -39,14 +39,26 @@ p {
 }
 
 h1 {
+    color: #2b6600;
+    margin-bottom: 0px;
+    margin-top: 0px;
+
     font-family: verdana, arial, sans-serif;
 }
 
 h2 {
+    color: #2b6600;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    
     font-family: verdana, arial, sans-serif;
 }
 
 h3 {
+    color: #2b6600;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    
     font-family: verdana, arial, sans-serif;
 }
 

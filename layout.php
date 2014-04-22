@@ -37,6 +37,10 @@ class layout {
         return mysql_result($query, 0, 'menu');
     }
     
+    public function getArticles() {
+        include 'showarticles.php';
+    }
+    
     public function getArticleTop($id) {
         
     }
