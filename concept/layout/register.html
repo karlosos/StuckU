@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css">
+        <title>StuckU - Inex</title> 
+        <meta charset="utf-8">
+        <meta name="keywords" content="Tutaj zaladowane keywords">
+        <meta name ="description" content="Tutaj zaladowany opis">
+    </head>
+
+    <body>
+        <nav> 
+            <ul id="nav_ul">
+                <li id="nav_li"><a href="index.html"> Home </a> </li>
+                <li id="nav_li"><a href="panel.html"> Dodaj artykuł </a></li>
+                <li id="nav_li"><a href="register.html">Rejestracja </a></li>
+                <li id="nav_li"><a href="comments.html"> Panel komentarzy </a></li>
+            </ul>
+        </nav>
+        <div id="container"> 
+            <aside> 
+                <div class="widget">
+                    <div id="aside_avatar"></div>
+                    <p id="aside_name"> Karol Dzialowski </p>
+                    <p id="aside_edit"> Edytuj profil </p>
+                </div>
+                <hr style="width:75%">
+                
+                <div class="widget">
+                    <h4 class="news_title"> Log In/Register </h2>
+                    <form action="login.php" method="post">
+                        <ul class="widget_ul">
+                            <li class="widget_li">
+                                Username: <br>
+                                <input type="text" name="username">
+                            </li>	
+                            <li class="widget_li">
+                                Password: <br>
+                                <input type="password" name="password">
+                            </li>
+                            <li class="widget_li">
+                                <input type="submit" value="Zaloguj">
+                            </li>
+                        </ul>
+                    </form>
+                </div>
+                <hr style="width:75%">
+            </aside>
+
+            <section>
+                <div class="news"> 
+                    <h3 class="news_title">Rejestracja</h3>
+                    <script src="ckeditor/ckeditor.js"></script>
+
+                    <form action="" method="post">
+                        <li>
+                            Username*: <br>
+                            <input type="text" name="username">		
+                        </li>
+                        <li>
+                            Password*: <br>
+                            <input type="password" name="password">		
+                        </li>
+                        <li>
+                            Password again*: <br>
+                            <input type="password" name="password_again">		
+                        </li>
+                        <li>
+                            First name*: <br>
+                            <input type="text" name="first_name">		
+                        </li>
+                        <li>
+                            Last name: <br>
+                            <input type="text" name="last_name">		
+                        </li>
+                        <li>
+                            E-mail*: <br>
+                            <input type="text" name="email">		
+                        </li>
+                        <li>
+                            <input type="submit" value="Register">
+                        </li>
+                    </form>
+                </div>
+            </section>
+
+
+        </div>
+    </body>
+
+</html>
