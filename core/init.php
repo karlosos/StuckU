@@ -5,6 +5,9 @@ require '\config.php';
 require '\layout.php';
 require '\validate.php';
 require '\user.php';
+require '\articles.php';
+require '\comments.php';
+require '\administrator.php';
 
 $user = new user();
 $errors = array();

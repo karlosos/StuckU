@@ -10,6 +10,10 @@ class layout {
         include 'includes/overlay/top.php';
     }
     
+    public function getTopAdm() {
+        include 'includes/overlay/top_adm.php';
+    }
+    
     public function getBottom() {
         include 'includes/overlay/bottom.php';
     }
@@ -42,11 +46,16 @@ class layout {
     }
     
     public function getArticleTop($id) {
+        $news = Array();
+        $news["title"] = title_from_id($id);
+        $news["date"] = date_from_id($id);
+        $news["author"] = author_from_id($id);
         
+        return $news;
     }
     
     public function getArticleContent($id) {
-        
+        return content_from_id($id);
     }
     
     public function getSidebar() {

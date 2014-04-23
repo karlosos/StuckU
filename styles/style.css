@@ -91,7 +91,6 @@ a {
 .news {
     background-color: #ffffff;
     width: 582px;
-    min-height: 300px;
     border-radius: 3px;
     border: solid #b8b8b8 1px;
     padding-left: 12px;
@@ -99,17 +98,18 @@ a {
     padding-top: 10px;
     margin-bottom: 8px;
     padding-bottom: 5px;
+    padding-bottom: 10px;
 }
 
 #news_separate {
     background-color: #ffffff;
     width: 582px;
-    min-height: 300px;
     border-radius: 3px;
     border: solid #b8b8b8 1px;
     padding-left: 12px;
     padding-right: 12px;
     padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .news_title {
@@ -150,6 +150,7 @@ a {
     padding-right: 12px;
     margin-bottom: 8px;
     margin-top: -3px;
+    padding-bottom: 10px;
 }
 
 .comment_author {

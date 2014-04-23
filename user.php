@@ -24,7 +24,7 @@ class user {
 
     }
     
-    static function login($username, $password) {
+    static public function login($username, $password) {
     $user_id = user::user_id_from_username($username);
 
     $username = sanitize($username);
@@ -32,9 +32,15 @@ class user {
 
     return (mysql_result(mysql_query("SELECT COUNT(`user_id`) FROM `users` WHERE `username` = '$username' AND `password` = '$password'"), 0) == 1) ? $user_id : false;
 }
-    static function user_id_from_username($username) {
+    static public function user_id_from_username($username) {
     $username = sanitize($username);
     $query = mysql_query("SELECT `user_id` FROM `users` WHERE `username` = '$username'");
     return mysql_result($query, 0, 'user_id');
+}
+
+    static public function user_moderator($username) {
+    $username = sanitize($username);
+    $query = mysql_query("SELECT COUNT(`user_id`) FROM `users` WHERE `username` = '$username' AND `moderator` = 1");
+    return (mysql_result($query, 0) == 1) ? true : false;
 }
 }
