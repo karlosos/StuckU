@@ -1,5 +1,11 @@
 <?php
+/**
+ * Plik wyswietlajacy komentarze 
+ */
 
+/*
+ * Pobieramy aktywne komentarze dla danego artykulu
+ */
 $article_id = $_GET['id'];
 $result = mysql_query("SELECT MAX(id) as id FROM comments WHERE article_id = '$article_id' AND active = '1'");
 
@@ -8,6 +14,9 @@ $id = $row["id"];
 
 echo "<div id='news_comments'>";
         
+/*
+ * Wyswietlamy komentarze
+ */
 for ($i = $id; $i > 0; $i--) {
     $result = mysql_query("SELECT author, content, date FROM comments WHERE id=" . $i ." AND article_id = '$article_id' AND active = '1'");
 
@@ -24,6 +33,9 @@ for ($i = $id; $i > 0; $i--) {
     }
     mysql_free_result($result);
 }
+/*
+ * Formularz komentarza
+ */
 ?>
     <form action='add_comment.php' method='get'>
         <ul class="widget_ul">

@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Funkcje odpowiadajace za artykuly
  * 

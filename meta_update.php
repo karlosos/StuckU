@@ -1,7 +1,24 @@
 <?php
+/**
+ * Plik do aktualizacji metadanych
+ * @package exec
+ * @author Karol Dzialowski
+ */
+
+/*
+ * Includujemy inicjalizacyjny pli
+ */
 include 'core\init.php';
+
+/*
+ * Wyswietlamy gore
+ */
 $layout = new layout();
 $layout->getTopAdm();
+
+/*
+ * Aktualizujemy metadane
+ */
 echo "<div class='news'>";
 if (user::user_moderator($user_data['username']) == true) {
     $administrator = new administrator();
@@ -20,5 +37,9 @@ if (user::user_moderator($user_data['username']) == true) {
     echo "Nie masz prawa tu przebywać, won!";
 }
 echo "</div>";
+
+/*
+ * Wyswietlamy dol strony
+ */
 $layout->getBottom();
 

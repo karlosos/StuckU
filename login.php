@@ -1,10 +1,22 @@
 <?php
+/**
+ * Plik do logowania
+ * @package exec
+ * @author Karol Dzialowski
+ */
 
+/*
+ * Includujemy plik inicjalizacyjny
+ */
 include 'core/init.php';
+
 if (empty($_POST) === false) {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
+    /*
+     * Dokonujemy walidacji
+     */
     if (empty($username) === true || empty($password) === true) {
         $errors[] = 'Musisz wprowadzic login i haslo';
     } else if (userExists($username) === false) {
@@ -33,6 +45,9 @@ if (empty($errors) === false) {
     echo output_errors($errors);
 }
 
+/*
+ * Wyswietlamy dol strony
+ */
 include 'includes/overall/footer.php';
 ?>
 

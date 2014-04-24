@@ -1,12 +1,18 @@
 <?php
 /**
- * Nowy artykul
+ * Plik dodajacy artykul
  * 
- * @package articles
+ * @package exec
  * @author Karol Dzialowski
- * @copyright (c) 2014, Karol Działowski https://github.com/karlosos/SharU
+ */
+/*
+ * Includujemy plik inicjalizacyjny
  */
 include 'core\init.php';
+
+/*
+ * Tworzymy layout
+ */
 $layout = new layout();
 $layout->getTopAdm();
 ?>
@@ -39,5 +45,9 @@ if (isset($_SESSION['user_id']) && user::user_moderator($user_data['username']) 
 } else {
     echo('Nie masz praw');
 }
+
+/*
+ * Wyswietlamy dol strony
+ */
 $layout->getBottom();
 ?>

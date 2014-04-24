@@ -1,13 +1,12 @@
 <?php
 /**
- * Plik wczytujący widżety
+ * Plik wczytujący widżety administratora
  * @package includes
  * @author Karol Dzialowski
  */
 ?>
 <aside> 
     <?php
-   
     if (logged_in() === true) {
         include 'includes/widgets/loggedin.php';
         echo "<hr style='width:75%'>";
@@ -17,11 +16,5 @@
         include 'includes/widgets/login.php';
         echo "<hr style='width:75%'>";
     }
-      /*
-    
-    include 'includes/widgets/loggedin.php';
-        echo "<hr style='width:75%'>";
-    include 'includes/widgets/login.php';
-        echo "<hr style='width:75%'>";*/
     ?>
 </aside> 

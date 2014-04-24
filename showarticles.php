@@ -1,4 +1,10 @@
 <?php
+
+/**
+ * Plik wyswietlajacy newsy
+ * @package exec
+ * @author Karol Dzialowski
+ */
 //Jezeli wyswietlamy pojedynczego newsa
 $article_id = $_GET['id'];
 if (isset($_GET['id']) && !empty($_GET['id'])) {
@@ -22,6 +28,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
     ?>
 
     <?php
+
 }
 //Sciana newsow w kolejnosci od najnowszego
 else {

@@ -1,5 +1,18 @@
 <?php
+/**
+ * Plik z panelem administracyjnym
+ * @package website
+ * @author Karol Dzialowski
+ */
+
+/*
+ * Includujemy inicjalizacyjny pli
+ */
 include 'core\init.php';
+
+/*
+ * Wyswietlamy gore
+ */
 $layout = new layout();
 $layout->getTopAdm();
 

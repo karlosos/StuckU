@@ -1,7 +1,21 @@
 <?php
+
+/**
+ * Plik dodajacy komentarz
+ * 
+ * @package exec
+ * @author Karol Dzialowski
+ */
+/*
+ * Includujemy plik inicjalizacyjny
+ */
 include 'core\init.php';
+
+/*
+ * Tworzymy layout
+ */
 $layout = new layout();
-$layout->getTop();
+$layout->getTopAdm();
 
 // Jeżeli są ustawione dane komentarza dodaj go
 if (isset($_GET['content']) && isset($_GET['article_id'])) {
@@ -17,5 +31,8 @@ if (isset($_GET['content']) && isset($_GET['article_id'])) {
     echo "<div id='news'> Coś poszło nie tak... </div>";
 }
 
+/*
+ * Wyswietlamy dol strony
+ */
 $layout->getBottom();
 ?>

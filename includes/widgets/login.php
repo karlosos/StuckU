@@ -1,8 +1,8 @@
 <?php
 /**
- * Plik widżetu logowania
+ * Plik z widżetem formularza logowania
  * @package widgets
- * @author Karol Dzialowski
+ * @author Kaol Działowski
  */
 ?>
 <div class="widget">
