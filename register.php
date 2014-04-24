@@ -21,13 +21,20 @@ if (empty($_POST) === false) {
             $errors[] = 'Przepraszamy, nazwa \'' . $_POST['username'] . '\' jest zajęta.';
         }
         
-        ifSpaces($_POST['username']);
-        
-        longerThan($_POST['password'], 2);
+ if (preg_match("/\\s/", $_POST['username']) == true) {
+            $errors[] = 'Login nie może zawierać spacji.';
+        }
+        if (strlen($_POST['password']) < 2) {
+            $errors[] = 'Hasło musi mieć minimum 2 znaki.';
+        }
  
-        ifPasswdMatch($_POST['password'], $_POST['password_again']);
+        if (ifPasswdMatch($_POST['password'], $_POST['password_again'])) {
+            $errors[] = 'Podane hasła nie pasują do siebie.';
+        }
         
-        checkMail($_POST['email']);
+        if (checkMail($_POST['email'])) {
+            $errors[] = 'Nieprawidłowy email.'; 
+        }
         
         if (emailExists($_POST['email']) === true) {
             $errors[] = 'Przepraszamy, email \'' . $_POST['email'] . '\' jest już w użyciu.';

@@ -10,33 +10,37 @@ function sanitize($data) {
 
 function ifSpaces($data) {
     if (preg_match("/\\s/", $data) == true) 
-            return true;
+            return false;
     else  {
+        return true;
         $errors[] = 'Twój login nie może zawierać spacji.';
     }            
 }
 
 function longerThan($data, $number) {
-    if(strlen($data) < $number) {
-        return true;
+    if(strlen($data) <= $number) {
+        return false;
     } 
     else {
+        return true;
         $errors[] = 'Hasło musi być dłuższe niż '.$number.' znaki';
     }
 }
 
 function ifPasswdMatch($passwd, $passwd2) {
     if($passwd === $passwd2) 
-        return true;
+        return false;
     else {
+        return true;
         $errors[] = 'Podane hasła nie pasują do siebie.';
     }
 }
 
 function checkMail($email) {
     if(filter_var($email, FILTER_VALIDATE_EMAIL)) 
-            return true;
+        return false;
     else {
+        return true;
         $errors[] = 'Nieprawidłowy email.'; 
     }
 }

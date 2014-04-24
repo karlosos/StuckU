@@ -3,15 +3,16 @@ include 'core\init.php';
 $layout = new layout();
 $layout->getTopAdm();
 
-if (user::user_moderator($user_data['username'])) {
+if (user::user_moderator($user_data['username']) == true) {
     $administrator = new administrator();
-} else {
-    $errors[] = 'Nie masz na to pozwolenia.';
-}
 
 echo "<div class='news'>";
 
-if ($_GET['action'] == "add_article" || empty($_GET['action'])) {
+if ($_GET['succes']) {
+    echo "<h3 class='news_title'>Pomyślne wykonanie akcji</h3>";
+}
+
+else if ($_GET['action'] == "add_article" || empty($_GET['action'])) {
     ?>
     <h3 class="news_title">Dodaj artykuł</h3>
     <script src="ckeditor/ckeditor.js"></script>
@@ -66,11 +67,18 @@ if ($_GET['action'] == "add_article" || empty($_GET['action'])) {
 <?php
 }
 } else if ($_GET['action'] == "comments") {
-
      if (isset($_POST)) {
         active_comment($_POST);
     }
-    
+    ?>
+        <script type="text/javascript">
+            function AlertIt() {
+                var answer = confirm ("Czy napewno chcesz usunąć wszystkie nieaktywowane komentarze?")
+                if (answer)
+                window.location="delete_all_comments.php";
+            }
+        </script>
+    <?php
     echo "<h3 class='news_title'>Komentarze do zatwierdzenia</h3>";
     // Zapytanie zwracające wszystkie niezatwierdzone komentarze
     $result = mysql_query("SELECT MAX(id) as id FROM comments WHERE active = '0'");
@@ -79,21 +87,19 @@ if ($_GET['action'] == "add_article" || empty($_GET['action'])) {
 
     // Wyświetlaj formularz z komentarzami do zatwiedzenia.
     if ($id != 0) {
-        echo "<form name='comment_update' action='' method='post'>";
+        echo "<form name='comment_update' action='active_comments.php' method='post'>";
 
         for ($i = $id; $i > 0; $i--) {
             $result = mysql_query("SELECT author, content, date, id, article_id FROM comments WHERE id=" . $i . " AND active = '0'");
 
 
             while ($row = mysql_fetch_array($result, MYSQL_NUM)) {
-                $article_title = title_from_id($row[4]);
                 echo("
                      <div class='news_comment'> 
                             <p class='comment_author'>$row[0]</p>
                             <p class='comment_date'>$row[2]</p>
                             <div class='comment_content'> $row[1] </div>
-                            <li> <input type='radio' name=' . $row[3] . ' value='1'>Zatwierdź </li>
-                            <li> <input type='radio' name=' . $row[3] . ' value='0'>Usuń </li>
+                            <li> <input type='radio' name='$row[3]' value='$row[3]'>Zatwierdź</li>
                             <hr class='comment_separate' />
                         </div>
                         ");
@@ -101,7 +107,8 @@ if ($_GET['action'] == "add_article" || empty($_GET['action'])) {
             mysql_free_result($result);
         }
 
-        echo "<input type='submit' value='Submit'/>";
+        echo "<input type='submit' value='Submit'/> </form>";
+        echo "<a href='javascript:AlertIt();'> <button type='button'>Usuń wszystkie niezatwierdzone</button> </a>";
     } else {
         echo "Nie ma żadnych komentarzy do zatwierdzenia";
     }
@@ -113,7 +120,7 @@ if ($_GET['action'] == "add_article" || empty($_GET['action'])) {
     } else {
 ?>
         <h3 class='news_title'>Metadane</h3>
-        <form action="panel.php" method="get">
+        <form action="meta_update.php" method="get">
             <ul>
                 <li> Tytuł: <input type="text" name="title" value="<?php echo layout::getTitle(); ?>" /> </li>
                 <li> Opis: <input type="text" name="description" value="<?php echo layout::getDescription(); ?>" /> </li>
@@ -143,6 +150,13 @@ if ($_GET['action'] == "add_article" || empty($_GET['action'])) {
     echo "</ul>";
 }
 echo "</div>";
+
+} else {
+    echo "<div class='news'>";
+    $errors[] = 'Nie masz na to pozwolenia.';
+    echo output_errors($errors);
+    echo "</div>";
+}
 
 $layout->getBottom();
 

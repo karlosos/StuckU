@@ -36,6 +36,11 @@ function delete_comment($comment_id) {
     mysql_query("DELETE FROM `comments` WHERE `id` = '$comment_id'");
 }
 
+function delete_all_comments() {
+    $comment_id = sanitize($comment_id);
+    mysql_query("DELETE FROM `comments` WHERE `active` = '0'");
+}
+
 /**
  * Funkcja aktywuje komentarz
  * 
@@ -46,4 +51,3 @@ function active_comment($comments) {
         mysql_query("UPDATE `comments` SET `active`='1' WHERE id =".$id);
     }
 }
-

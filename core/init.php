@@ -51,3 +51,19 @@ function user_active($username) {
     $query = mysql_query("SELECT COUNT(`user_id`) FROM `users` WHERE `username` = '$username' AND `active` = 1");
     return (mysql_result($query, 0) == 1) ? true : false;
 }
+
+function update_title($title) {
+    $title = sanitize($title);
+     mysql_query("UPDATE info SET `title`='$title' WHERE `id`='0'");
+}
+
+function update_description($description) {
+        $description = sanitize($description);
+     mysql_query("UPDATE info SET `description`='$description' WHERE `id`='0'");
+}
+
+function update_keywords($keywords) {
+        $keywords = sanitize($keywords);
+     mysql_query("UPDATE info SET `keywords`='$keywords' WHERE `id`='0'");
+    
+}
