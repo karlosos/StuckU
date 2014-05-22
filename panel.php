@@ -29,10 +29,25 @@ else if ($_GET['action'] == "add_article" || empty($_GET['action'])) {
     ?>
     <h3 class="news_title">Dodaj artykuł</h3>
     <script src="ckeditor/ckeditor.js"></script>
-    <form method="post" action="add_article.php" name="add_article">
+    <script>
+                function isValidDate(){
+                var subject=document.forms["add_article"]["date_pub"].value;
+                if (subject.match(/^[1-9][0-9][0-9][0-9]\-[0-1][1-9]\-[0-3][0-9]$/)){
+                      return true;
+                    }else{
+                    alert("Nieprawidłowa data");
+                    return false;
+                    }
+                  }
+    </script>
+    <form method="post" action="add_article.php" name="add_article" onsubmit="return isValidDate()">
         <li>
             Tytuł<br>
             <input type="text" name="title" style="width: 99%;"/>
+        </li>
+        <li>
+            Data publikacji<br>
+            <input type="text" name="date_pub" style="width: 99%;"/>
         </li>
         <li>
             Treść<br>

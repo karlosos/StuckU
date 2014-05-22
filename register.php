@@ -80,7 +80,55 @@ if (isset($_GET['succes']) && empty($_GET['succes'])) {
     }
     ?>
 
-    <form action="" method="post">
+    <script>
+    function validateForm()
+    {
+        var x=document.forms["register"]["username"].value;
+        if (x==null || x=="" || isNaN(x))
+          {
+           alert("Nie wszystkie pola są wypełnione prawidłowo");
+          return false;
+          }
+          
+        var x=document.forms["register"]["password"].value;
+        if (x==null || x=="" || isNaN(x))
+          {
+          alert("Nie wszystkie pola są wypełnione prawidłowo");
+          return false;
+          }
+          
+        var x=document.forms["register"]["password_again"].value;
+        if (x==null || x=="" || isNaN(x))
+          {
+           alert("Nie wszystkie pola są wypełnione prawidłowo");
+          return false;
+          }
+          
+        var x=document.forms["register"]["first_name"].value;
+        if (x==null || x=="" || isNaN(x))
+          {
+           alert("Nie wszystkie pola są wypełnione prawidłowo");
+          return false;
+          }
+          
+        var x=document.forms["register"]["email"].value;
+        if (x==null || x=="" || isNaN(x))
+          {
+           alert("Nie wszystkie pola są wypełnione prawidłowo");
+          return false;
+          }
+          
+        var x=document.forms["register"]["email"].value;
+        var atpos=x.indexOf("@");
+        var dotpos=x.lastIndexOf(".");
+        if (atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length)
+        {
+          alert("Nie prawidłowy email");
+          return false;
+        }
+    }
+    </script>
+    <form name="register" action="" method="post" onsubmit="return validateForm()">
         <li>
             Username*: <br>
             <input type="text" name="username">		

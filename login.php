@@ -36,7 +36,11 @@ if (empty($_POST) === false) {
 } else {
     $erros[] = 'Brak danych';
 }
-include 'includes/overall/header.php';
+/*
+ * Wyswietlamy gore
+ */
+$layout = new layout();
+$layout->getTopAdm();
 
 if (empty($errors) === false) {
     ?>
@@ -48,6 +52,6 @@ if (empty($errors) === false) {
 /*
  * Wyswietlamy dol strony
  */
-include 'includes/overall/footer.php';
+$layout->getBottom();
 ?>
 

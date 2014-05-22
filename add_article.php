@@ -33,6 +33,7 @@ if (isset($_SESSION['user_id']) && user::user_moderator($user_data['username']) 
                 //'excerpt' 		=> $_POST['excerpt'],
                 'content' => $_POST['content'],
                 'author' => $user_data['username'],
+                'date_pub' => $_POST['date_pub']
             );
 
             add_article($article_data);
