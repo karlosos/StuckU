@@ -1,5 +1,8 @@
 <?php
 /**
+ * @package name
+ */
+/**
  * Plik index
  * @package website
  * @author Karol Dzialowski

@@ -81,6 +81,10 @@ if (isset($_GET['succes']) && empty($_GET['succes'])) {
     ?>
 
     <script>
+     /**
+      * Funkcja która sprawdza formularz
+      * @returns {Boolean}
+      */
     function validateForm()
     {
         var x=document.forms["register"]["username"].value;
