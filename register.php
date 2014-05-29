@@ -81,56 +81,77 @@ if (isset($_GET['succes']) && empty($_GET['succes'])) {
     ?>
 
     <script>
-     /**
-      * Funkcja która sprawdza formularz
-      * @returns {Boolean}
-      */
-    function validateForm()
-    {
-        var x=document.forms["register"]["username"].value;
-        if (x==null || x=="" || isNaN(x))
-          {
-           alert("Nie wszystkie pola są wypełnione prawidłowo");
-          return false;
-          }
-          
-        var x=document.forms["register"]["password"].value;
-        if (x==null || x=="" || isNaN(x))
-          {
-          alert("Nie wszystkie pola są wypełnione prawidłowo");
-          return false;
-          }
-          
-        var x=document.forms["register"]["password_again"].value;
-        if (x==null || x=="" || isNaN(x))
-          {
-           alert("Nie wszystkie pola są wypełnione prawidłowo");
-          return false;
-          }
-          
-        var x=document.forms["register"]["first_name"].value;
-        if (x==null || x=="" || isNaN(x))
-          {
-           alert("Nie wszystkie pola są wypełnione prawidłowo");
-          return false;
-          }
-          
-        var x=document.forms["register"]["email"].value;
-        if (x==null || x=="" || isNaN(x))
-          {
-           alert("Nie wszystkie pola są wypełnione prawidłowo");
-          return false;
-          }
-          
-        var x=document.forms["register"]["email"].value;
-        var atpos=x.indexOf("@");
-        var dotpos=x.lastIndexOf(".");
-        if (atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length)
+        /**
+         * Obiekt zawierający funkcje walidacji
+         */
+        var validation = {
+            /**
+             * Sprawdza czy email jest prawidłowy
+             * @param {type} str
+             * @returns {Boolean}
+             */
+            isEmail: function(str) {
+                var atpos = str.indexOf("@");
+                var dotpos = str.lastIndexOf(".");
+                if (atpos < 1 || dotpos < atpos + 2 || dotpos + 2 >= x.length) {
+                    alert("Nie prawidłowy email");
+                    return false;
+                }
+            },
+            /**
+             * Sprawdza czy nie jest puste
+             * @param {type} str
+             * @returns {Boolean}
+             */
+            isNotEmpty: function(str) {
+                if (str == null || str == '') {
+                    alert("Przynajmniej jedno wymgane pole jest puste");
+                    return false;
+                }
+            },
+            /**
+             * Sprawdza czy jest numerem
+             * @param {type} str
+             * @returns {Boolean}
+             */
+            isNumber: function(str) {
+                var pattern = /^\d+$/;
+                if (pattern.test(str)) {
+                    alert("Pola nie mogą składać się z samych cyfr");
+                    return false;
+                }
+            },
+            /**
+             * Sprawdza czy dwa stringi są takie same
+             * @param {type} str1
+             * @param {type} str2
+             * @returns {Boolean}
+             */
+            isSame: function(str1, str2) {
+                if (str1 != str2) {
+                    alert("Podane hasła się nie zgadzają");
+                    return false;
+                }
+            }
+        };
+       
+        /**
+         * Funkcja wywoływana przez przycisk submit
+         */
+        function validateForm()
         {
-          alert("Nie prawidłowy email");
-          return false;
+            validation.isNotEmpty(document.forms["register"]["username"].value);
+            validation.isNumber(document.forms["register"]["username"].value);
+            
+            validation.isNotEmpty(document.forms["register"]["password"].value);
+            validation.isNotEmpty(document.forms["register"]["password_again"].value);
+            validation.isSame(document.forms["register"]["password"].value, document.forms["register"]["password_again"].value)
+            
+            validation.isNotEmpty(document.forms["register"]["first_name"].value);
+            validation.isNumber(document.forms["register"]["first_name"].value);
+            
+            valdation.isEmail(document.forms["register"]["email"].value);
         }
-    }
     </script>
     <form name="register" action="" method="post" onsubmit="return validateForm()">
         <li>

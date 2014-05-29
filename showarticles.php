@@ -10,7 +10,7 @@ $article_id = $_GET['id'];
 if (isset($_GET['id']) && !empty($_GET['id'])) {
     $result = mysql_query("SELECT id, title, content, excerpt, author, date, date_pub FROM articles WHERE id=" . $_GET['id']);
     while ($row = mysql_fetch_array($result, MYSQL_NUM)) {
-        if ($row[6] >= date('Y-m-d') ) {
+        if ($row[6] <= date('Y-m-d') ) {
         echo ("
                 <div id='news_separate'>
                     <h3 class='news_title'> $row[1] </h2>
@@ -47,7 +47,7 @@ else {
             if (strlen($small) > 500) {
                 $small = substr($row[2], 0, 500) . "... <br> <a href='index.php?id=" . $row[0] . "'>Czytaj więcej</a> ";
             }
-            if ($row[6] >= date('Y-m-d') ) {
+            if ($row[6] <= date('Y-m-d') ) {
             echo("
                 <div class='news'>
                     <h3 class='news_title'> <a href='index.php?id=" . $row[0] . "'> $row[1] </a> </h2>
