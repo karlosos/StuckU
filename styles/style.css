@@ -86,6 +86,10 @@ a {
     font-weight: bold;
 }
 
+#nav {
+    visibility: visible;
+}
+
 /* Section */
 
 .news {
