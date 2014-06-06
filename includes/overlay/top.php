@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
     <?php include 'includes/head.php'; ?>
-    <body>
+    <body id="body">
         <?php include 'includes/nav.php'; ?>
         <div id="container"> 
             <?php include 'includes/aside.php'; ?>
